@@ -41,11 +41,13 @@
 const express = require('express');
 const routes = require('./routes');
 const cors = require('cors')
+const { errors } = require('celebrate');
 
 const app = express(); //variável que armazena a aplicação
 
 app.use(cors());
 app.use(express.json()); //informa ao API que vc trabalhará com dados do tipo JSON
 app.use(routes);
+app.use(errors());
 
-app.listen(3333); //acessa a aplicação através dessa porta, para funcionar é necessário criar uma rota
+module.exports = app;
